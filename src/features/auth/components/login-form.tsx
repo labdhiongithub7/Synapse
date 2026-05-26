@@ -83,7 +83,8 @@ export function LoginForm() {
                     type="button"
                     disabled={isPending}
                   >
-                    Continue with GitHub
+                  <Image alt="GitHub" src="/logos/github.svg" width={20} height={20} />
+                  Continue with GitHub
                   </Button>
                   <Button
                     variant="outline"
@@ -91,7 +92,8 @@ export function LoginForm() {
                     type="button"
                     disabled={isPending}
                   >
-                    Continue with Google
+                  <Image alt="Google" src="/logos/google.svg" width={20} height={20} />
+                  Continue with Google
                   </Button>
                 </div>
                 <div className="grid gap-6">
