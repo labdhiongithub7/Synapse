@@ -5,7 +5,7 @@ const Page = async () => {
   await requireUnauth();
 
 
-      <RegisterForm />
+return <RegisterForm />
 };
 
 export default Page;
