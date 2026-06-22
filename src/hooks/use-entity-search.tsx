@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface UseEntitySearchProps<T extends Record<string, unknown>> {
   params: T;
@@ -12,7 +12,7 @@ export const useEntitySearch = <T extends Record<string, unknown>>({
   setParams,
 }: UseEntitySearchProps<T>) => {
   const [searchValue, setSearchValue] = useState(
-    (params.search as string) ?? ""
+    (params.search as string) ?? "",
   );
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const useEntitySearch = <T extends Record<string, unknown>>({
 
       return () => clearTimeout(timeout);
     },
-    [setParams]
+    [setParams],
   );
 
   return {

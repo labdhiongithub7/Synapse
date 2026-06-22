@@ -1,25 +1,38 @@
 import { Suspense } from "react";
-import { EditorHeader } from "@/features/editor/components/editor-header";
-import { Editor } from "@/features/editor/components/editor";
-import { LoadingView, ErrorView } from "@/components/entity-components";
 import { ErrorBoundary } from "react-error-boundary";
+import {
+  Editor,
+  EditorError,
+  EditorLoading,
+} from "@/features/editor/components/editor";
+import { EditorHeader } from "@/features/editor/components/editor-header";
+import { prefetchWorkflow } from "@/features/workflows/server/prefetch";
+import { requireAuth } from "@/lib/auth-utils";
+import { HydrateClient } from "@/trpc/server";
 
-interface Props {
-  params: Promise<{ workflowId: string }>;
+interface PageProps {
+  params: Promise<{
+    workflowId: string;
+  }>;
 }
 
-const Page = async ({ params }: Props) => {
+const Page = async ({ params }: PageProps) => {
+  await requireAuth();
+
   const { workflowId } = await params;
+  prefetchWorkflow(workflowId);
 
   return (
-    <div className="flex flex-col h-screen">
-      <ErrorBoundary fallback={<ErrorView message="Error loading workflow" />}>
-        <Suspense fallback={<LoadingView message="Loading editor..." />}>
+    <HydrateClient>
+      <ErrorBoundary fallback={<EditorError />}>
+        <Suspense fallback={<EditorLoading />}>
           <EditorHeader workflowId={workflowId} />
-          <Editor workflowId={workflowId} />
+          <main className="flex-1">
+            <Editor workflowId={workflowId} />
+          </main>
         </Suspense>
       </ErrorBoundary>
-    </div>
+    </HydrateClient>
   );
 };
 

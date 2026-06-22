@@ -1,7 +1,7 @@
-import prisma from "@/lib/db";
-import { inngest } from "./client";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateText } from "ai";
+import prisma from "@/lib/db";
+import { inngest } from "./client";
 
 const google = createGoogleGenerativeAI();
 
@@ -18,11 +18,11 @@ export const execute = inngest.createFunction(
         system: "You are a helpful assistant.",
         prompt: "What is 2 + 2?",
         experimental_telemetry: {
-          isEnabled:true,
+          isEnabled: true,
           recordInputs: true,
           recordOutputs: true,
-        }
-      }
+        },
+      },
     );
 
     return {
