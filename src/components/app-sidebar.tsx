@@ -22,8 +22,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { useHasActiveSubscription } from "@/features/subscriptions/hooks/use-subscription";
 import { authClient } from "@/lib/auth-client";
+import { useHasActiveSubscription } from "@/features/subscriptions/hooks/use-subscription";
 
 const menuItems = [
   {
@@ -45,7 +45,7 @@ const menuItems = [
         url: "/executions",
       },
     ],
-  },
+  }
 ];
 
 export const AppSidebar = () => {
@@ -59,8 +59,8 @@ export const AppSidebar = () => {
         <SidebarMenuItem>
           <SidebarMenuButton asChild className="gap-x-4 h-10 px-4">
             <Link href="/" prefetch>
-              <Image src="/logo.png" alt="Synapse" width={30} height={30} />
-              <span className="font-semibold text-sm">Synapse</span>
+              <Image src="/logos/logo.svg" alt="Nodebase" width={30} height={30} />
+              <span className="font-semibold text-sm">Nodebase</span>
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
@@ -122,15 +122,13 @@ export const AppSidebar = () => {
             <SidebarMenuButton
               tooltip="Sign out"
               className="gap-x-4 h-10 px-4"
-              onClick={() =>
-                authClient.signOut({
-                  fetchOptions: {
-                    onSuccess: () => {
-                      router.push("/login");
-                    },
+              onClick={() => authClient.signOut({
+                fetchOptions: {
+                  onSuccess: () => {
+                    router.push("/login");
                   },
-                })
-              }
+                },
+              })}
             >
               <LogOutIcon className="h-4 w-4" />
               <span>Sign out</span>
