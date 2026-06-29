@@ -11,6 +11,9 @@ import { stripeTriggerChannel } from "./channels/stripe-trigger";
 import { openAiChannel } from "./channels/openai";
 import { discordChannel } from "./channels/discord";
 import { slackChannel } from "./channels/slack";
+import { waitChannel } from "./channels/wait";
+import { telegramMessageChannel } from "./channels/telegram";
+import { gmailChannel } from "./channels/gmail";
 
 export const executeWorkflow = inngest.createFunction(
   { 
@@ -36,6 +39,9 @@ export const executeWorkflow = inngest.createFunction(
         openAiChannel(),
         discordChannel(),
         slackChannel(),
+        waitChannel(),
+        telegramMessageChannel(),
+        gmailChannel(),
       ],
     }],
   },

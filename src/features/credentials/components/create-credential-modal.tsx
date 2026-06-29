@@ -110,6 +110,8 @@ export const CreateCredentialModal = ({ open, onOpenChange, defaultType }: Props
                       <SelectItem value={CredentialType.OPENAI}>OpenAI</SelectItem>
                       <SelectItem value={CredentialType.ANTHROPIC}>Anthropic</SelectItem>
                       <SelectItem value={CredentialType.GEMINI}>Google Gemini</SelectItem>
+                      <SelectItem value={CredentialType.TELEGRAM}>Telegram Bot Token</SelectItem>
+                      <SelectItem value={CredentialType.GMAIL}>Gmail App Password</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />

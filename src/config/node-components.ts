@@ -9,6 +9,9 @@ import { StripeTriggerNode } from "@/features/triggers/components/stripe-trigger
 import { AiTextGenerationNode } from "@/features/executions/components/ai-text-generation/node";
 import { DiscordMessageNode } from "@/features/executions/components/discord-message/node";
 import { SlackMessageNode } from "@/features/executions/components/slack-message/node";
+import { WaitNode } from "@/features/executions/components/wait/node";
+import { TelegramMessageNode } from "@/features/executions/components/telegram-message/node";
+import { GmailNode } from "@/features/executions/components/gmail/node";
 
 export const nodeComponents = {
   [NodeType.INITIAL]: InitialNode,
@@ -19,8 +22,11 @@ export const nodeComponents = {
   [NodeType.OPENAI]: AiTextGenerationNode,
   [NodeType.DISCORD]: DiscordMessageNode,
   [NodeType.SLACK]: SlackMessageNode,
-  [NodeType.GEMINI]: InitialNode, // Stubs for schema compatibility
-  [NodeType.ANTHROPIC]: InitialNode,
+  [NodeType.GEMINI]: AiTextGenerationNode,
+  [NodeType.ANTHROPIC]: AiTextGenerationNode,
+  [NodeType.TELEGRAM]: TelegramMessageNode,
+  [NodeType.GMAIL]: GmailNode,
+  [NodeType.WAIT]: WaitNode,
 } as const satisfies NodeTypes;
 
 export type RegisteredNodeType = keyof typeof nodeComponents;

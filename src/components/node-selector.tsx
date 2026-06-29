@@ -72,6 +72,24 @@ const executionNodes: NodeTypeOption[] = [
     description: "Send a message to Slack",
     icon: "/logos/slack.svg",
   },
+  {
+    type: NodeType.TELEGRAM,
+    label: "Telegram",
+    description: "Send a message to Telegram",
+    icon: "/logos/telegram.svg",
+  },
+  {
+    type: NodeType.GMAIL,
+    label: "Gmail",
+    description: "Send an email via Gmail",
+    icon: "/logos/gmail.svg",
+  },
+  {
+    type: NodeType.WAIT,
+    label: "Wait",
+    description: "Pause the workflow for a specified duration",
+    icon: "/logos/clock.svg",
+  },
 ];
 
 

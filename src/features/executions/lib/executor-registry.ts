@@ -8,6 +8,10 @@ import { discordExecutor } from "../components/discord-message/executor";
 import { slackExecutor } from "../components/slack-message/executor";
 import { aiTextGenerationExecutor } from "../components/ai-text-generation/executor";
 
+import { waitExecutor } from "../components/wait/executor";
+import { telegramMessageExecutor } from "../components/telegram-message/executor";
+import { gmailExecutor } from "../components/gmail/executor";
+
 export const executorRegistry: Record<NodeType, NodeExecutor<any>> = {
   [NodeType.INITIAL]: manualTriggerExecutor,
   [NodeType.MANUAL_TRIGGER]: manualTriggerExecutor,
@@ -19,6 +23,9 @@ export const executorRegistry: Record<NodeType, NodeExecutor<any>> = {
   [NodeType.SLACK]: slackExecutor,
   [NodeType.GEMINI]: async () => { throw new Error("Not implemented") },
   [NodeType.ANTHROPIC]: async () => { throw new Error("Not implemented") },
+  [NodeType.WAIT]: waitExecutor,
+  [NodeType.TELEGRAM]: telegramMessageExecutor,
+  [NodeType.GMAIL]: gmailExecutor,
 };
 
 export const getExecutor = (type: NodeType): NodeExecutor => {
